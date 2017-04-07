@@ -83,6 +83,7 @@ function roomJoined(room) {
 
   room.participants.forEach(function(participant) {
     log("Already in Room: '" + participant.identity + "'");
+    log("Number of " + participant.identity + " tracks: " + participant.tracks.size);
     var previewContainer = document.getElementById('remote-media');
     attachParticipantTracks(participant, previewContainer);
   });
@@ -92,11 +93,13 @@ function roomJoined(room) {
     log("Joining: '" + participant.identity + "'");
   });
 
+  /*
   room.on('trackAdded', function(track, participant) {
     log(participant.identity + " added track: " + track.kind);
     var previewContainer = document.getElementById('remote-media');
     attachTracks([track], previewContainer);
   });
+  */
 
   room.on('trackRemoved', function(track, participant) {
     log(participant.identity + " removed track: " + track.kind);
